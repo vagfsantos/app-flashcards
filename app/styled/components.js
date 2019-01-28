@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Row = styled.View`
+export const Main = styled.View`
   flex: 1;
 `;
 

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator, createAppContainer } from "react-navigation";
 
-import { Row } from "../styled/components";
 import DeckListScreen from "../screens/DeckListScreen";
 import NewDeckScreen from "../screens/NewDeckScreen";
 import { COLORS } from "../utils/colors";
@@ -44,11 +43,7 @@ const TabNavigator = createAppContainer(Navigation);
 
 class DeckListStack extends Component {
   render() {
-    return (
-      <Row>
-        <TabNavigator />
-      </Row>
-    );
+    return <TabNavigator />;
   }
 }
 

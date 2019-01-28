@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { StatusBar } from "react-native";
+import { StatusBar, View } from "react-native";
 import { Constants } from "expo";
 
 import { COLORS } from "../utils/colors";
-import { Row, Container } from "../styled/components";
+import { Container } from "../styled/components";
 
 const { GRAY_LIGHT, MAIN } = COLORS;
 
@@ -27,7 +27,7 @@ const HeaderTitleStyled = styled.Text`
 `;
 
 const Header = () => (
-  <Row>
+  <View>
     <StatusBarStyled>
       <StatusBar />
     </StatusBarStyled>
@@ -36,7 +36,7 @@ const Header = () => (
         <HeaderTitleStyled>Flashcards</HeaderTitleStyled>
       </Container>
     </HeaderStyled>
-  </Row>
+  </View>
 );
 
 export default Header;
