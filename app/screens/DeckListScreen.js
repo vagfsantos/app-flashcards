@@ -1,8 +1,22 @@
 import React, { Component } from "react";
-import { FlatList, Text, View } from "react-native";
+import styled from "styled-components";
 
 import { Container } from "../styled/components";
 import DeckItem from "../components/DeckItem";
+
+const EmptyDeck = styled.View`
+  flex: 1;
+  justify-content: center;
+`;
+
+const EmptyDeckText = styled.Text`
+  text-align: center;
+  font-size: 18;
+`;
+
+const DeckList = styled.FlatList`
+  flex: 1;
+`;
 
 class DeckListScreen extends Component {
   render() {
@@ -11,14 +25,14 @@ class DeckListScreen extends Component {
     return (
       <Container>
         {decks.length > 0 ? (
-          <FlatList
+          <DeckList
             data={decks}
             renderItem={({ item }) => <DeckItem deck={item} />}
           />
         ) : (
-          <View>
-            <Text>You haven't created a deck yet!</Text>
-          </View>
+          <EmptyDeck>
+            <EmptyDeckText>You haven't created a deck yet!</EmptyDeckText>
+          </EmptyDeck>
         )}
       </Container>
     );

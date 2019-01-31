@@ -4,22 +4,23 @@ import { StatusBar, View } from "react-native";
 import { Constants } from "expo";
 
 import { COLORS } from "../utils/colors";
-import { Container } from "../styled/components";
 
 const { GRAY_LIGHT, MAIN } = COLORS;
 
-const StatusBarStyled = styled.View`
+const StatusBarWrapper = styled.View`
   height: ${Constants.statusBarHeight};
   background-color: ${MAIN};
 `;
 
-const HeaderStyled = styled.View`
+const HeaderWrapper = styled.View`
+  padding-right: 20;
+  padding-left: 20;
   justify-content: center;
   height: 40;
   background-color: ${GRAY_LIGHT};
 `;
 
-const HeaderTitleStyled = styled.Text`
+const HeaderTitle = styled.Text`
   font-size: 18;
   font-weight: 300;
   text-transform: uppercase;
@@ -28,14 +29,12 @@ const HeaderTitleStyled = styled.Text`
 
 const Header = () => (
   <View>
-    <StatusBarStyled>
+    <StatusBarWrapper>
       <StatusBar />
-    </StatusBarStyled>
-    <HeaderStyled>
-      <Container>
-        <HeaderTitleStyled>Flashcards</HeaderTitleStyled>
-      </Container>
-    </HeaderStyled>
+    </StatusBarWrapper>
+    <HeaderWrapper>
+      <HeaderTitle>Flashcards</HeaderTitle>
+    </HeaderWrapper>
   </View>
 );
 
