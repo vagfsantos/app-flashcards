@@ -1,6 +1,8 @@
 export const SIZES = {
   MARGIN: {
-    MEDIUM: 20
+    LARGE: 40,
+    MEDIUM: 20,
+    SMALL: 10
   },
 
   FONTS: {

@@ -18,12 +18,12 @@ const HeaderWrapper = styled.View`
   padding-right: ${MARGIN.MEDIUM};
   padding-left: ${MARGIN.MEDIUM};
   justify-content: center;
-  height: 40;
+  height: 60;
   background-color: ${GRAY_LIGHT};
 `;
 
 const HeaderTitle = styled.Text`
-  font-size: ${FONTS.NORMAL};
+  font-size: ${FONTS.MEDIUM};
   font-weight: 300;
   text-transform: uppercase;
   color: ${MAIN};
