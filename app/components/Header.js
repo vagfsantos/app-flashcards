@@ -4,8 +4,10 @@ import { StatusBar, View } from "react-native";
 import { Constants } from "expo";
 
 import { COLORS } from "../utils/colors";
+import { SIZES } from "../utils/sizes";
 
 const { GRAY_LIGHT, MAIN } = COLORS;
+const { MARGIN, FONTS } = SIZES;
 
 const StatusBarWrapper = styled.View`
   height: ${Constants.statusBarHeight};
@@ -13,15 +15,15 @@ const StatusBarWrapper = styled.View`
 `;
 
 const HeaderWrapper = styled.View`
-  padding-right: 20;
-  padding-left: 20;
+  padding-right: ${MARGIN.MEDIUM};
+  padding-left: ${MARGIN.MEDIUM};
   justify-content: center;
   height: 40;
   background-color: ${GRAY_LIGHT};
 `;
 
 const HeaderTitle = styled.Text`
-  font-size: 18;
+  font-size: ${FONTS.NORMAL};
   font-weight: 300;
   text-transform: uppercase;
   color: ${MAIN};
