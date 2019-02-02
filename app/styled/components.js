@@ -41,6 +41,7 @@ const ButtonSuccess = styled.TouchableOpacity`
   border-radius: ${BORDER_RADIUS};
   justify-content: center;
   align-self: center;
+  opacity: ${props => (props.disabled ? 0.4 : 1)};
 `;
 
 const ButtonSuccessText = styled.Text`
