@@ -2,6 +2,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 
 import DeckStack from "./DeckStack";
 import DeckListStack from "./DeckListStack";
+import GameStack from "./GameStack";
 
 const RouteConfigs = {
   DeckListStack: {
@@ -16,6 +17,13 @@ const RouteConfigs = {
     navigationOptions: ({ navigation }) => ({
       headerTitle: `${navigation.state.params.title} Deck`
     })
+  },
+
+  GameStack: {
+    screen: GameStack,
+    navigationOptions: {
+      headerTitle: "Playing"
+    }
   }
 };
 

@@ -24,6 +24,10 @@ const CardsQuantity = styled.Text`
 `;
 
 class DeckScreen extends Component {
+  startGame = cards => {
+    this.props.navigation.navigate("GameStack", { cards });
+  };
+
   render() {
     const { deck } = this.props;
 
@@ -33,7 +37,11 @@ class DeckScreen extends Component {
           <Ionicons name="logo-buffer" size={120} color={COLORS.MAIN_DARK} />
           <DeckTitle>{deck.title}</DeckTitle>
           <CardsQuantity>{deck.cards.length} cards</CardsQuantity>
-          <Button type="success" disabled={deck.cards.length === 0}>
+          <Button
+            onPress={() => this.startGame(deck.cards)}
+            type="success"
+            disabled={deck.cards.length === 0}
+          >
             Start
           </Button>
         </Wrapper>
@@ -47,7 +55,6 @@ const mapStateToProps = (state, props) => {
     deck => deck.id === props.navigation.state.params.deckId
   );
 
-  console.log(props.navigation.state.params.deckId);
   return {
     deck
   };

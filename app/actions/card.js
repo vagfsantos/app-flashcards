@@ -10,8 +10,8 @@ const addCard = (deckId, card) => ({
   }
 });
 
-export const addCardAsync = card => (dispatch, getStore) => {
-  dispatch(addCard(card));
+export const addCardAsync = (deckId, card) => (dispatch, getStore) => {
+  dispatch(addCard(deckId, card));
 
   storage.saveAll(getStore()).catch(() => console.warn);
 };

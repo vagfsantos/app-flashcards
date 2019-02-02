@@ -54,7 +54,6 @@ class NewDeckScreen extends Component {
 
   createCard = () => {
     const deckId = this.props.navigation.state.params.deckId;
-    console.log(deckId);
     const card = this.state.card;
 
     this.props.dispatch(addCardAsync(deckId, card));
