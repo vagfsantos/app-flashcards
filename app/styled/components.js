@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { COLORS } from "../utils/colors";
 import { SIZES } from "../utils/sizes";
 
-const { GRAY_LIGHT, MAIN, SUPPORT, SUPPORT_DARK } = COLORS;
+const { GRAY_LIGHT, MAIN, MAIN_DARK, SUPPORT, SUPPORT_DARK } = COLORS;
 const { MARGIN, BORDER_RADIUS, FONTS } = SIZES;
 
 export const Main = styled.View`
@@ -33,9 +33,8 @@ export const InputLabel = styled.Text`
   margin-bottom: ${MARGIN.SMALL};
 `;
 
-const ButtonSuccess = styled.TouchableOpacity`
+const ButtonBaseStyle = styled.TouchableOpacity`
   width: 160;
-  background-color: ${SUPPORT};
   margin-bottom: ${MARGIN.MEDIUM};
   height: 50;
   border-radius: ${BORDER_RADIUS};
@@ -44,10 +43,25 @@ const ButtonSuccess = styled.TouchableOpacity`
   opacity: ${props => (props.disabled ? 0.4 : 1)};
 `;
 
-const ButtonSuccessText = styled.Text`
-  color: ${SUPPORT_DARK};
+const ButtonSuccess = styled(ButtonBaseStyle)`
+  background-color: ${SUPPORT};
+`;
+
+const ButtonDanger = styled(ButtonBaseStyle)`
+  background-color: ${MAIN_DARK};
+`;
+
+const ButtonTextBaseStyle = styled.Text`
   font-size: ${FONTS.MEDIUM};
   text-align: center;
+`;
+
+const ButtonSuccessText = styled(ButtonTextBaseStyle)`
+  color: ${SUPPORT_DARK};
+`;
+
+const ButtonDangerText = styled(ButtonTextBaseStyle)`
+  color: ${MAIN_DARK};
 `;
 
 export const Button = ({ type, children, ...props }) =>
@@ -55,4 +69,8 @@ export const Button = ({ type, children, ...props }) =>
     <ButtonSuccess {...props}>
       <ButtonSuccessText>{children}</ButtonSuccessText>
     </ButtonSuccess>
-  ) : null;
+  ) : (
+    <ButtonDanger {...props}>
+      <ButtonDangerText>{children}</ButtonDangerText>
+    </ButtonDanger>
+  );
