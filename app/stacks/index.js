@@ -13,9 +13,8 @@ const RouteConfigs = {
 
   DeckStack: {
     screen: DeckStack,
-    path: "/:deck",
     navigationOptions: ({ navigation }) => ({
-      headerTitle: `${navigation.state.params.deck.title} Deck`
+      headerTitle: `${navigation.state.params.title} Deck`
     })
   }
 };

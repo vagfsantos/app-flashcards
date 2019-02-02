@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { Container, Input, InputLabel, Button } from "../styled/components";
 import { SIZES } from "../utils/sizes";
-import { addDeckAsync } from "../actions/deck";
+import { addCardAsync } from "../actions/card";
 
 const FieldsWrapper = styled.View`
   margin-bottom: ${SIZES.MARGIN.LARGE};
@@ -22,7 +22,7 @@ class NewDeckScreen extends Component {
     this.setState({
       card: {
         ...this.state.card,
-        question: question.trim()
+        question: question
       }
     });
   };
@@ -31,7 +31,7 @@ class NewDeckScreen extends Component {
     this.setState({
       card: {
         ...this.state.card,
-        answer: answer.trim()
+        answer: answer
       }
     });
   };
@@ -53,8 +53,11 @@ class NewDeckScreen extends Component {
   };
 
   createCard = () => {
+    const deckId = this.props.navigation.state.params.deckId;
+    console.log(deckId);
     const card = this.state.card;
-    this.props.dispatch(addDeckAsync(card));
+
+    this.props.dispatch(addCardAsync(deckId, card));
     this.onSaveNewCard();
   };
 
@@ -64,7 +67,7 @@ class NewDeckScreen extends Component {
 
   render() {
     const isSaveButtonDisabled = !(
-      this.state.card.question && this.state.card.answer
+      this.state.card.question.trim() && this.state.card.answer.trim()
     );
 
     return (
@@ -88,7 +91,7 @@ class NewDeckScreen extends Component {
 
         <Button
           type="success"
-          onPress={this.createDeck}
+          onPress={this.createCard}
           disabled={isSaveButtonDisabled}
         >
           Salvar

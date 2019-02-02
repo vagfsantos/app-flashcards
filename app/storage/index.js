@@ -4,7 +4,7 @@ const STORAGE_KEY = "FLASH_CARDS";
 const { stringify: toString, parse } = JSON;
 
 export default {
-  saveDecks(decks) {
+  saveAll(decks) {
     return AsyncStorage.setItem(STORAGE_KEY, toString(decks));
   },
 

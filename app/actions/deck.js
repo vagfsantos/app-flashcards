@@ -18,7 +18,7 @@ const fetchAllDecks = decks => ({
 export const addDeckAsync = deck => (dispatch, getStore) => {
   dispatch(addDeck(deck));
 
-  storage.saveDecks(getStore()).catch(() => console.warn);
+  storage.saveAll(getStore()).catch(() => console.warn);
 };
 
 export const fecthAllDecksAsync = () => dispatch => {

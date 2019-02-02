@@ -25,8 +25,8 @@ class DeckListScreen extends Component {
     this.props.dispatch(fecthAllDecksAsync());
   }
 
-  transitionToDeck(deck) {
-    this.props.navigation.navigate("DeckStack", { deck });
+  transitionToDeck(title, deckId) {
+    this.props.navigation.navigate("DeckStack", { title, deckId });
   }
 
   render() {
@@ -40,7 +40,7 @@ class DeckListScreen extends Component {
             keyExtractor={item => item.id}
             renderItem={({ item }) => (
               <DeckItem
-                onPress={() => this.transitionToDeck(item)}
+                onPress={() => this.transitionToDeck(item.title, item.id)}
                 deck={item}
                 key={item.id}
               />

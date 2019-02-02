@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import { Container, Button } from "../styled/components";
@@ -24,7 +25,7 @@ const CardsQuantity = styled.Text`
 
 class DeckScreen extends Component {
   render() {
-    const deck = this.props.navigation.state.params.deck;
+    const { deck } = this.props;
 
     return (
       <Container>
@@ -41,4 +42,15 @@ class DeckScreen extends Component {
   }
 }
 
-export default DeckScreen;
+const mapStateToProps = (state, props) => {
+  const deck = state.decks.find(
+    deck => deck.id === props.navigation.state.params.deckId
+  );
+
+  console.log(props.navigation.state.params.deckId);
+  return {
+    deck
+  };
+};
+
+export default connect(mapStateToProps)(DeckScreen);
