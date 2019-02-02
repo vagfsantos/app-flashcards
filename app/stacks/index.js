@@ -22,7 +22,8 @@ const RouteConfigs = {
   GameStack: {
     screen: GameStack,
     navigationOptions: {
-      headerTitle: "Playing"
+      header: null,
+      gesturesEnabled: false
     }
   }
 };
