@@ -35,8 +35,8 @@ const CardsNumber = styled.Text`
   font-size: ${FONTS.SMALL};
 `;
 
-const DeckItem = ({ deck }) => (
-  <ListItem>
+const DeckItem = ({ deck, ...props }) => (
+  <ListItem {...props}>
     <TitleWrapper>
       <MaterialCommunityIcons name="cards" color={GRAY_DARK} size={20} />
       <Title>{deck.title}</Title>

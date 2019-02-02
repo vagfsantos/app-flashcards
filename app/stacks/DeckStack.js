@@ -2,8 +2,8 @@ import React from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { createBottomTabNavigator } from "react-navigation";
 
-import DeckListScreen from "../screens/DeckListScreen";
-import NewDeckScreen from "../screens/NewDeckScreen";
+import DeckScreen from "../screens/DeckScreen";
+import NewCardScreen from "../screens/NewCardScreen";
 import { COLORS } from "../utils/colors";
 
 const { MAIN, GRAY_DARK } = COLORS;
@@ -15,21 +15,21 @@ const navgationOptions = {
   }
 };
 
-const DeckListStack = createBottomTabNavigator(
+const DeckStack = createBottomTabNavigator(
   {
-    DeckList: {
-      screen: DeckListScreen,
+    Deck: {
+      screen: DeckScreen,
       navigationOptions: {
-        tabBarLabel: "Decks",
+        tabBarLabel: "Play",
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="ios-list" color={tintColor} size={26} />
+          <Ionicons name="ios-play" color={tintColor} size={26} />
         )
       }
     },
-    NewDeck: {
-      screen: NewDeckScreen,
+    NewCard: {
+      screen: NewCardScreen,
       navigationOptions: {
-        tabBarLabel: "New Deck",
+        tabBarLabel: "Add Card",
         tabBarIcon: ({ tintColor }) => (
           <Ionicons name="ios-add-circle-outline" color={tintColor} size={26} />
         )
@@ -39,4 +39,4 @@ const DeckListStack = createBottomTabNavigator(
   navgationOptions
 );
 
-export default DeckListStack;
+export default DeckStack;
