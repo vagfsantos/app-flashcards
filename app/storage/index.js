@@ -1,9 +1,14 @@
 import { AsyncStorage } from "react-native";
 
-const { stringfy: toString } = JSON;
+const STORAGE_KEY = "FLASH_CARDS";
+const { stringify: toString, parse } = JSON;
 
 export default {
-  async saveDeck(deck) {
-    await AsyncStorage.setItem(deck.id, toString(deck));
+  saveDecks(decks) {
+    return AsyncStorage.setItem(STORAGE_KEY, toString(decks));
+  },
+
+  async fetchAllDecks() {
+    return AsyncStorage.getItem(STORAGE_KEY).then(decks => parse(decks));
   }
 };

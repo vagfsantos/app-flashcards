@@ -1,6 +1,7 @@
 import storage from "../storage";
 
 export const ADD_DECK = "ADD_DECK";
+export const GET_ALL_DECKS = "GET_ALL_DECKS";
 
 const addDeck = deck => ({
   type: ADD_DECK,
@@ -9,9 +10,20 @@ const addDeck = deck => ({
   }
 });
 
-export const addDeckAsync = deck => dispatch => {
+const fetchAllDecks = decks => ({
+  type: GET_ALL_DECKS,
+  payload: decks
+});
+
+export const addDeckAsync = deck => (dispatch, getStore) => {
+  dispatch(addDeck(deck));
+
+  storage.saveDecks(getStore()).catch(() => console.warn);
+};
+
+export const fecthAllDecksAsync = () => dispatch => {
   storage
-    .saveDeck(deck)
-    .then(() => dispatch(addDeck(deck)))
+    .fetchAllDecks()
+    .then(({ decks }) => dispatch(fetchAllDecks(decks)))
     .catch(() => console.warn);
 };

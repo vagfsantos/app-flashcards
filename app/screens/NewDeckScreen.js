@@ -29,6 +29,7 @@ class NewDeckScreen extends Component {
     };
 
     this.props.dispatch(addDeckAsync(deck));
+
     this.onSaveNewDeck();
   };
 

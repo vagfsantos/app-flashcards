@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 import { Container } from "../styled/components";
 import DeckItem from "../components/DeckItem";
+import { fecthAllDecksAsync } from "../actions/deck";
 
 const EmptyDeck = styled.View`
   flex: 1;
@@ -19,15 +21,20 @@ const DeckList = styled.FlatList`
 `;
 
 class DeckListScreen extends Component {
+  componentDidMount() {
+    this.props.dispatch(fecthAllDecksAsync());
+  }
+
   render() {
-    const { decks = [] } = this.props;
+    const { decks } = this.props;
 
     return (
       <Container>
         {decks.length > 0 ? (
           <DeckList
             data={decks}
-            renderItem={({ item }) => <DeckItem deck={item} />}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <DeckItem deck={item} key={item.id} />}
           />
         ) : (
           <EmptyDeck>
@@ -39,4 +46,10 @@ class DeckListScreen extends Component {
   }
 }
 
-export default DeckListScreen;
+const mapStateToProps = state => {
+  return {
+    decks: state.decks
+  };
+};
+
+export default connect(mapStateToProps)(DeckListScreen);

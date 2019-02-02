@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
@@ -11,7 +11,7 @@ import Header from "./app/components/Header";
 
 const store = createStore(reducers, middlewares);
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
