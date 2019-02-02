@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import uuid from "uuid/v1";
 
 import { Container, Input, InputLabel, Button } from "../styled/components";
 import { SIZES } from "../utils/sizes";
@@ -13,48 +12,80 @@ const FieldsWrapper = styled.View`
 
 class NewDeckScreen extends Component {
   state = {
-    title: ""
+    card: {
+      question: "",
+      answer: ""
+    }
   };
 
-  onDeckTitleChange = title => {
+  onQuestionChange = question => {
     this.setState({
-      title
+      card: {
+        ...this.state.card,
+        question: question.trim()
+      }
     });
   };
 
-  createDeck = () => {
-    const deck = {
-      title: this.state.title,
-      id: uuid()
-    };
-
-    this.props.dispatch(addDeckAsync(deck));
-
-    this.onSaveNewDeck();
+  onAnswerChange = answer => {
+    this.setState({
+      card: {
+        ...this.state.card,
+        answer: answer.trim()
+      }
+    });
   };
 
-  onSaveNewDeck() {
+  onCancel = () => {
+    this.resetAndGoBack();
+  };
+
+  resetAndGoBack = () => {
     this.setState(
       {
-        title: ""
+        card: {
+          question: "",
+          answer: ""
+        }
       },
-      () => this.props.navigation.navigate("DeckList")
+      () => this.props.navigation.goBack()
     );
-  }
+  };
+
+  createCard = () => {
+    const card = this.state.card;
+    this.props.dispatch(addDeckAsync(card));
+    this.onSaveNewCard();
+  };
+
+  onSaveNewCard = () => {
+    this.resetAndGoBack();
+  };
 
   render() {
-    const isSaveButtonDisabled = this.state.title.trim().length === 0;
+    const isSaveButtonDisabled = !(
+      this.state.card.question && this.state.card.answer
+    );
 
     return (
       <Container>
         <FieldsWrapper>
-          <InputLabel>Deck Name</InputLabel>
+          <InputLabel>Question</InputLabel>
           <Input
-            placeholder="Deck name"
-            onChangeText={this.onDeckTitleChange}
-            value={this.state.title}
+            placeholder="Question"
+            onChangeText={this.onQuestionChange}
+            value={this.state.card.question}
           />
         </FieldsWrapper>
+        <FieldsWrapper>
+          <InputLabel>Answer</InputLabel>
+          <Input
+            placeholder="Question"
+            onChangeText={this.onAnswerChange}
+            value={this.state.card.answer}
+          />
+        </FieldsWrapper>
+
         <Button
           type="success"
           onPress={this.createDeck}
@@ -62,12 +93,8 @@ class NewDeckScreen extends Component {
         >
           Salvar
         </Button>
-        <Button
-          type="danger"
-          onPress={this.createDeck}
-          disabled={isSaveButtonDisabled}
-        >
-          Salvar
+        <Button type="danger" onPress={this.onCancel}>
+          Cancelar
         </Button>
       </Container>
     );

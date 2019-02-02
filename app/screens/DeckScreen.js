@@ -24,13 +24,17 @@ const CardsQuantity = styled.Text`
 
 class DeckScreen extends Component {
   render() {
+    const deck = this.props.navigation.state.params.deck;
+
     return (
       <Container>
         <Wrapper>
           <Ionicons name="logo-buffer" size={120} color={COLORS.MAIN_DARK} />
-          <DeckTitle>DeckScreen</DeckTitle>
-          <CardsQuantity>34 cards</CardsQuantity>
-          <Button type="success">Start</Button>
+          <DeckTitle>{deck.title}</DeckTitle>
+          <CardsQuantity>{deck.cards.length} cards</CardsQuantity>
+          <Button type="success" disabled={deck.cards.length === 0}>
+            Start
+          </Button>
         </Wrapper>
       </Container>
     );

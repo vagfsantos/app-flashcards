@@ -48,7 +48,7 @@ const ButtonSuccess = styled(ButtonBaseStyle)`
 `;
 
 const ButtonDanger = styled(ButtonBaseStyle)`
-  background-color: ${MAIN_DARK};
+  background-color: ${MAIN};
 `;
 
 const ButtonTextBaseStyle = styled.Text`
