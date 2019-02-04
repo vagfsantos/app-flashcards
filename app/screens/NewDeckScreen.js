@@ -22,23 +22,25 @@ class NewDeckScreen extends Component {
     });
   };
 
-  createDeck = () => {
+  createDeck = async () => {
     const deck = {
+      cards: [],
       title: this.state.title,
       id: uuid()
     };
 
     this.props.dispatch(addDeckAsync(deck));
 
-    this.onSaveNewDeck();
+    this.onSaveNewDeck(deck);
   };
 
-  onSaveNewDeck() {
+  onSaveNewDeck({ id: deckId, title, cards }) {
     this.setState(
       {
         title: ""
       },
-      () => this.props.navigation.navigate("DeckList")
+      () =>
+        this.props.navigation.navigate("DeckStack", { deckId, title, cards })
     );
   }
 

@@ -29,7 +29,7 @@ class DeckScreen extends Component {
   };
 
   render() {
-    const { deck } = this.props;
+    const { deck = {} } = this.props;
 
     return (
       <Container>
