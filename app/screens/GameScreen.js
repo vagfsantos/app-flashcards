@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
@@ -76,7 +76,7 @@ const initialState = {
   gameover: false
 };
 
-class GameScreen extends Component {
+class GameScreen extends PureComponent {
   state = {
     ...initialState
   };
@@ -102,8 +102,8 @@ class GameScreen extends Component {
     });
   };
 
-  onGameOver = status => {
-    this.setState({ gameover: status });
+  onGameOver = () => {
+    this.setState({ gameover: true });
     notificationService.cancelTodaysNotification();
   };
 
