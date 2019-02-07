@@ -1,6 +1,7 @@
 # FlashCards
 
-An iOS App made for save questions and its answers in order to study later.
+An academic project built with React Native.
+It is about an iOS App made for saving questions and its answers in order to study later using the flashcards technique.
 
 ## Running
 
